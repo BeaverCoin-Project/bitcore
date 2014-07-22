@@ -1,3 +1,4 @@
+var scrypt = require("scrypt");
 var crypto = require('crypto');
 var bignum = require('bignum');
 var Binary = require('binary');
@@ -8,12 +9,14 @@ if (process.browser) {
   var hashjs = require('hash.js');
 }
 
+scrypt.hash.config.outputEncoding = "buffer";
 var sha256 = exports.sha256 = function(data) {
-  return new Buffer(crypto.createHash('sha256').update(data).digest('binary'), 'binary');
+  //return new Buffer(crypto.createHash('sha256').update(data).digest('binary'), 'binary');
+  return scrypt.kdf(data, { N: 1024, r: 1, p: 1 }, 32, data);
 };
 
 var sha512 = exports.sha512 = function(data) {
-  if (process.browser) {
+  /*if (process.browser) {
     var datahex = data.toString('hex');
     var databits = sjcl.codec.hex.toBits(datahex);
     var hashbits = sjcl.hash.sha512.hash(databits);
@@ -21,7 +24,8 @@ var sha512 = exports.sha512 = function(data) {
     var hash = new Buffer(hashhex, 'hex');
     return hash;
   };
-  return new Buffer(crypto.createHash('sha512').update(data).digest('binary'), 'binary');
+  return new Buffer(crypto.createHash('sha512').update(data).digest('binary'), 'binary');*/
+  return scrypt.kdf(data, { N: 1024, r: 1, p: 1 }, 32, data);
 };
 
 var sha512hmac = exports.sha512hmac = function(data, key) {

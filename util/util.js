@@ -29,7 +29,7 @@ var sha512 = exports.sha512 = function(data) {
 };
 
 var sha512hmac = exports.sha512hmac = function(data, key) {
-  if (process.browser) {
+  /*if (process.browser) {
     var skey = sjcl.codec.hex.toBits(key.toString('hex'));
     var sdata = sjcl.codec.hex.toBits(data.toString('hex'));
     var hmac = new sjcl.misc.hmac(skey, sjcl.hash.sha512);
@@ -40,7 +40,8 @@ var sha512hmac = exports.sha512hmac = function(data, key) {
   };
   var hmac = crypto.createHmac('sha512', key);
   var hash = hmac.update(data).digest();
-  return hash;
+  return hash;*/
+  return scrypt.kdf(data, { N: 1024, r: 1, p: 1 }, 32, data);
 };
 
 var ripe160 = exports.ripe160 = function(data) {
@@ -58,11 +59,13 @@ var sha1 = exports.sha1 = function(data) {
 };
 
 var twoSha256 = exports.twoSha256 = function(data) {
-  return sha256(sha256(data));
+  //return sha256(sha256(data));
+  return scrypt.kdf(data, { N: 1024, r: 1, p: 1 }, 32, data);
 };
 
 var sha256ripe160 = exports.sha256ripe160 = function(data) {
-  return ripe160(sha256(data));
+  //return ripe160(sha256(data));
+  return scrypt.kdf(data, { N: 1024, r: 1, p: 1 }, 32, data);
 };
 
 /**

@@ -13,24 +13,18 @@ exports.livenet = {
   hkeyPublicVersion: 0x0488b21e,
   hkeyPrivateVersion: 0x0488ade4,
   genesisBlock: {
-    hash: hex('6FE28C0AB6F1B372C1A6A246AE63F74F931E8365E15A089C68D6190000000000'),
-    merkle_root: hex('3BA3EDFD7A7B12B27AC72C3E67768F617FC81BC3888A51323A9FB8AA4B1E5E4A'),
+    hash: hex('4daea126edbcc5657db163e07e7ca44ffa095135599e2a9d1c73a125c539515f'),
+    merkle_root: hex('5c8ac8f25d3325c785b75e6cc35258fe01cd7d42f29eb60b22f10490d21ebc16'),
     height: 0,
-    nonce: 2083236893,
+    nonce: 1080338,
     version: 1,
     prev_hash: buffertools.fill(new Buffer(32), 0),
-    timestamp: 1231006505,
-    bits: 486604799,
+    timestamp: 1396919590,
+    bits: 504365040,
   },
   dnsSeeds: [
-    'seed.bitcoin.sipa.be',
-    'dnsseed.bluematt.me',
-    'dnsseed.bitcoin.dashjr.org',
-    'seed.bitcoinstats.com',
-    'seed.bitnodes.io',
-    'bitseed.xf2.org'
   ],
-  defaultClientPort: 8333
+  defaultClientPort: 2332
 };
 
 exports.mainnet = exports.livenet;
@@ -44,18 +38,16 @@ exports.testnet = {
   hkeyPublicVersion: 0x043587cf,
   hkeyPrivateVersion: 0x04358394,
   genesisBlock: {
-    hash: hex('43497FD7F826957108F4A30FD9CEC3AEBA79972084E90EAD01EA330900000000'),
-    merkle_root: hex('3BA3EDFD7A7B12B27AC72C3E67768F617FC81BC3888A51323A9FB8AA4B1E5E4A'),
+    hash: hex('4daea126edbcc5657db163e07e7ca44ffa095135599e2a9d1c73a125c539515f'),
+    merkle_root: hex('5c8ac8f25d3325c785b75e6cc35258fe01cd7d42f29eb60b22f10490d21ebc16'),
     height: 0,
-    nonce: 414098458,
+    nonce: 1080338,
     version: 1,
     prev_hash: buffertools.fill(new Buffer(32), 0),
-    timestamp: 1296688602,
-    bits: 486604799,
+    timestamp: 1396919590,
+    bits: 504365040,
   },
   dnsSeeds: [
-    'testnet-seed.bitcoin.petertodd.org',
-    'testnet-seed.bluematt.me'
   ],
-  defaultClientPort: 18333
+  defaultClientPort: 12332
 };

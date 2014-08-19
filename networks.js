@@ -23,6 +23,7 @@ exports.livenet = {
     bits: 504365040,
   },
   dnsSeeds: [
+    'dnsseed.beavercoin.org'
   ],
   defaultClientPort: 2332
 };

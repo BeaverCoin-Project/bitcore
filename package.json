@@ -1,7 +1,7 @@
 {
   "name": "bitcore",
   "description": "Bitcoin Library",
-  "version": "0.1.32",
+  "version": "0.1.38",
   "author": {
     "name": "Stephen Pair",
     "email": "stephen@bitpay.com"
@@ -49,14 +49,14 @@
     "install": "node-gyp rebuild",
     "test": "node browser/build.js -a && node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --reporter spec test",
-    "prepublish": "node browser/build.js -m"
+    "prepublish": "node browser/build.js -a"
   },
   "dependencies": {
     "grunt-browserify": "~2.0.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-markdown": "~0.5.0",
     "grunt-mocha-test": "~0.8.2",
-    "grunt-shell": "~0.6.4",    
+    "grunt-shell": "~0.6.4",
     "protobufjs": "=3.0.0",
     "coveralls": "^2.10.0",
     "istanbul": "~0.2.6",
@@ -65,6 +65,7 @@
     "sjcl": "=1.0.1",
     "hash.js": "=0.3.1",
     "bn.js": "=0.13.3",
+    "jsrsasign": "=0.0.3",
     "elliptic": "=0.15.7",
     "bindings": "=1.1.1",
     "bufferput": "git://github.com/bitpay/node-bufferput.git",
@@ -83,7 +84,9 @@
     "async": "~0.2.10",
     "event-stream": "~3.1.5",
     "gulp-concat": "~2.2.0",
-    "gulp": "~3.8.2"
+    "gulp": "~3.8.2",
+    "preconditions": "^1.0.7",
+    "asn1.js": "0.4.1"
   },
   "testling": {
     "harness": "mocha-bdd",
@@ -101,13 +104,21 @@
   },
   "browser": {
     "bignum": "./lib/browser/Bignum.js",
+    "buffertools": "browserify-buffertools",
     "./lib/Key.js": "./lib/browser/Key.js",
     "./lib/Point.js": "./lib/browser/Point.js",
     "./lib/ECIES.js": "./lib/browser/ECIES.js",
-    "./lib/SecureRandom.js": "./lib/browser/SecureRandom.js"
+    "./lib/SecureRandom.js": "./lib/browser/SecureRandom.js",
+    "./lib/PayPro.js": "./lib/browser/PayPro.js"
   },
   "license": "MIT",
   "engines": {
     "node": ">=0.10"
+  },
+  "devDependencies": {
+    "sinon": "^1.10.3",
+    "express": "4.6.1",
+    "request": "2.39.0",
+    "optimist": "0.6.1"
   }
 }
